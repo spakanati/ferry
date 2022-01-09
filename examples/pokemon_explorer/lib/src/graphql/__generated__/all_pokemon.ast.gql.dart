@@ -19,6 +19,13 @@ const AllPokemon = _i1.OperationDefinitionNode(
           type: _i1.NamedTypeNode(
               name: _i1.NameNode(value: 'Int'), isNonNull: true),
           defaultValue: _i1.DefaultValueNode(value: null),
+          directives: []),
+      _i1.VariableDefinitionNode(
+          variable: _i1.VariableNode(name: _i1.NameNode(value: 'show_height')),
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'Boolean'), isNonNull: false),
+          defaultValue:
+              _i1.DefaultValueNode(value: _i1.BooleanValueNode(value: true)),
           directives: [])
     ],
     directives: [],

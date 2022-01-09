@@ -25,7 +25,14 @@ class _$GAllPokemonVarsSerializer
       'offset',
       serializers.serialize(object.offset, specifiedType: const FullType(int)),
     ];
-
+    Object? value;
+    value = object.show_height;
+    if (value != null) {
+      result
+        ..add('show_height')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
     return result;
   }
 
@@ -49,6 +56,10 @@ class _$GAllPokemonVarsSerializer
           result.offset = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
+        case 'show_height':
+          result.show_height = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool?;
+          break;
       }
     }
 
@@ -61,11 +72,15 @@ class _$GAllPokemonVars extends GAllPokemonVars {
   final int limit;
   @override
   final int offset;
+  @override
+  final bool? show_height;
 
   factory _$GAllPokemonVars([void Function(GAllPokemonVarsBuilder)? updates]) =>
       (new GAllPokemonVarsBuilder()..update(updates)).build();
 
-  _$GAllPokemonVars._({required this.limit, required this.offset}) : super._() {
+  _$GAllPokemonVars._(
+      {required this.limit, required this.offset, this.show_height})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(limit, 'GAllPokemonVars', 'limit');
     BuiltValueNullFieldError.checkNotNull(offset, 'GAllPokemonVars', 'offset');
   }
@@ -83,19 +98,22 @@ class _$GAllPokemonVars extends GAllPokemonVars {
     if (identical(other, this)) return true;
     return other is GAllPokemonVars &&
         limit == other.limit &&
-        offset == other.offset;
+        offset == other.offset &&
+        show_height == other.show_height;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, limit.hashCode), offset.hashCode));
+    return $jf($jc(
+        $jc($jc(0, limit.hashCode), offset.hashCode), show_height.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('GAllPokemonVars')
           ..add('limit', limit)
-          ..add('offset', offset))
+          ..add('offset', offset)
+          ..add('show_height', show_height))
         .toString();
   }
 }
@@ -112,6 +130,10 @@ class GAllPokemonVarsBuilder
   int? get offset => _$this._offset;
   set offset(int? offset) => _$this._offset = offset;
 
+  bool? _show_height;
+  bool? get show_height => _$this._show_height;
+  set show_height(bool? show_height) => _$this._show_height = show_height;
+
   GAllPokemonVarsBuilder();
 
   GAllPokemonVarsBuilder get _$this {
@@ -119,6 +141,7 @@ class GAllPokemonVarsBuilder
     if ($v != null) {
       _limit = $v.limit;
       _offset = $v.offset;
+      _show_height = $v.show_height;
       _$v = null;
     }
     return this;
@@ -142,7 +165,8 @@ class GAllPokemonVarsBuilder
             limit: BuiltValueNullFieldError.checkNotNull(
                 limit, 'GAllPokemonVars', 'limit'),
             offset: BuiltValueNullFieldError.checkNotNull(
-                offset, 'GAllPokemonVars', 'offset'));
+                offset, 'GAllPokemonVars', 'offset'),
+            show_height: show_height);
     replace(_$result);
     return _$result;
   }

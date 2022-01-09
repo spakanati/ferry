@@ -6,7 +6,7 @@ fragment NestedFragment on Pokemon {
 
 fragment PokemonCard on Pokemon {
   ...NestedFragment
-  height {
+  height @include(if: $show_height) {
     in_meter
   }
   weight {

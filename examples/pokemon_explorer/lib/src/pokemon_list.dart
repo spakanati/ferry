@@ -18,6 +18,18 @@ class PokemonListScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('All Pokemon'),
       ),
+            floatingActionButton: FloatingActionButton(
+          onPressed: () async {
+            print("Fetching query and requesting fewer fields in fragment");
+            await client
+                .request(GAllPokemonReq((b) => b
+                  ..vars.limit = 50
+                  ..vars.offset = 0
+                  ..vars.show_height = false
+                  ..fetchPolicy = FetchPolicy.CacheAndNetwork))
+                .firstWhere((resp) => resp.dataSource == DataSource.Link);
+          },
+          child: Text('Test')),
       body: Operation<GAllPokemonData, GAllPokemonVars>(
         client: client,
         operationRequest: GAllPokemonReq(

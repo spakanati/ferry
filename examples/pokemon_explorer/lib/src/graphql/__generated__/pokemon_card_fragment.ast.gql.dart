@@ -41,7 +41,14 @@ const PokemonCard = _i1.FragmentDefinitionNode(
           name: _i1.NameNode(value: 'height'),
           alias: null,
           arguments: [],
-          directives: [],
+          directives: [
+            _i1.DirectiveNode(name: _i1.NameNode(value: 'include'), arguments: [
+              _i1.ArgumentNode(
+                  name: _i1.NameNode(value: 'if'),
+                  value: _i1.VariableNode(
+                      name: _i1.NameNode(value: 'show_height')))
+            ])
+          ],
           selectionSet: _i1.SelectionSetNode(selections: [
             _i1.FieldNode(
                 name: _i1.NameNode(value: 'in_meter'),

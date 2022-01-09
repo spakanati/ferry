@@ -15,6 +15,7 @@ abstract class GAllPokemonVars
 
   int get limit;
   int get offset;
+  bool? get show_height;
   static Serializer<GAllPokemonVars> get serializer =>
       _$gAllPokemonVarsSerializer;
   Map<String, dynamic> toJson() =>

@@ -27,11 +27,11 @@ class PokemonCard extends StatelessWidget {
                 style: Theme.of(context).textTheme.headline6,
               ),
               Text(
-                'height: ${pokemon.height?.in_meter ?? 0}',
+                'height: ${pokemon.height?.in_meter ?? 'NULL!'}',
                 style: Theme.of(context).textTheme.subtitle1,
               ),
               Text(
-                'weight: ${pokemon.weight?.in_kg ?? 0}',
+                'weight: ${pokemon.weight?.in_kg ?? 'NULL!'}',
                 style: Theme.of(context).textTheme.subtitle1,
               )
             ],
